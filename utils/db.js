@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
+require("dotenv").config();
 
-const URI = "mongodb://0.0.0.0:27017/mern";
+const URI = process.env.MONGO_URL;
 
 const connectDb = async ()=>{
     try{

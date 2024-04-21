@@ -7,9 +7,10 @@ const requirementRouter = require('./routers/requirement-router');
 const app = express();
 const connectDb = require("./utils/db");
 const errorMiddleware = require('./middlewares/error-middleware');
+require("dotenv").config();
 
 const corsOptions = {
-    origin: "http://localhost:5173",
+    origin: process.env.BASE_URL,
     methods: "GET, POST, PUT, DELETE, HEAD",
     credentials: true,
 }
@@ -23,7 +24,7 @@ app.use("/api/data", serviceRoute);
 app.use("/api/info", requirementRouter);
 app.use(errorMiddleware);
 
-const PORT = 5000;
+const PORT = process.env.PORT;
 
 
 connectDb().then(()=>{
